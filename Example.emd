@@ -1,0 +1,22 @@
+/* Made by Eng.Mohamed shehab */
+// Reading ADC using polling
+#include <avr/io.h>
+#include"ADC_AVR_UPDATED.h"
+int main (void){
+	unsigned int data;
+	DDRC = 0xFF;	// make Port B an output
+	DDRD = 0xFF;	// make Port D an output
+	DDRA = 0;	       // make Port A an input for ADC input
+	ADC_open; // make ADC enable
+  ADC_CLK128; //select CLK/128
+	ADC_2.65V;  // 2.56V Vref internal, right justified,
+	            // select ADC Channel 0
+	
+	while (1){
+		ADC_Startconversion;		// start conversion
+		Check_sucssesful_conversion;
+		// wait for conversion to finish
+		store_data(data);
+   set_ADC_data_to_ports(data,PORTD,PORTC);
+	}
+	return 0;
