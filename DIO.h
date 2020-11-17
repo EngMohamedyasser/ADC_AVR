@@ -8,6 +8,15 @@
 /* DIO header file
 this ADC file made for AVR kit "Atmega32"*/
 //Made by Eng Mohamed shehab :)
+
+#define DA DDRA
+
+#define DB DDRB
+
+#define DC DDRC
+
+#define DD DDRD
+
 #define Set_Register(Register) Register=0xFF
 
 #define Set_OutputPort(Port)  Port=0xFF
