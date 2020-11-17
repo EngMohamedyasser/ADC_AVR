@@ -1,22 +1,37 @@
 /* Made by Eng.Mohamed shehab */
 // Reading ADC using polling
+
+
+*/Including Header files  */
 #include <avr/io.h>
 #include"ADC_AVR_UPDATED.h"
+#include "DIO.h"
+
 int main (void){
-	unsigned int data;
-	DDRC = 0xFF;	// make Port B an output
-	DDRD = 0xFF;	// make Port D an output
-	DDRA = 0;	       // make Port A an input for ADC input
+	
+	uint8_t data;           // this will be for storing the data to be passed to the registers
+	
+	Set_Register(DC);	// make Port B an output
+	
+	Set_Register(DC);	// make Port D an output
+	
+	Set_register_as_input(DA)	       // make Port A an input for ADC input
+	
 	ADC_open; // make ADC enable
-  ADC_CLK128; //select CLK/128
-	ADC_2.65V;  // 2.56V Vref internal, right justified,
-	            // select ADC Channel 0
+        
+	ADC_CLK128; //select CLK/128
+	
+	ADC_2.65V;  // 2.56V Vref internal
+	
 	
 	while (1){
 		ADC_Startconversion;		// start conversion
-		Check_sucssesful_conversion;
-		// wait for conversion to finish
-		store_data(data);
-   set_ADC_data_to_ports(data,PORTD,PORTC);
+	
+	Check_sucssesful_conversion;
+	
+	// wait for conversion to finish
+	store_data(data);
+        
+	set_ADC_data_to_Rports(data,PORTD,PORTC);
 	}
 	return 0;
