@@ -52,25 +52,23 @@ Made by Eng Mohamed shehab :)
 
   #define open_ADC7  ADMUX|=(1<<0)|(1<<1)|(1<<2)
   
-  
-
+  //_________________________________________________________________
+//Storing data in which adjusment
+//By Conversion the data will be stored with right adjustment by defalut
+ #define Left_adjsutment   ADMUX|=(1<<5)
+//_________________________________________________________________
 
 //you have to check that the ADC is finshed converting i.e(this line will go to infinite loop till the ADC tells the AVr that it finished "==1")
   #define Check_sucssesful_conversion  while(CustomADC_reg&(1<<4))==0) 
 //_________________________________________________________________
 
-
-
 //lets start convertion ;)
   #define ADC_Startconversion CustomADC_reg|=(1<<6)
-//_________________________________________________________________
 
-
+  //_________________________________________________________________
 
 //data had been resulted ? set it in your ports
-  #define set_ADC_data_to_Rports(data,fullport,partialport) data=ADC; \ fullport=data; \ partialport=data >> 8; //right adjustment
-
-  #define set_ADC_data_to_Lports(data,fullport,partialport) data=ADC; \ fullport=data; \ partialport=data << 1; //left adjustment
+  #define set_ADC_data_to_Rports(data,fullport,partialport) data=ADC; \ fullport=data; \ partialport=data >> 8;
 //_________________________________________________________________
 
 //VRef source i.e(this should happen in setup steps... if you will plug Vexternal , you can ignore this setup step ;))
@@ -79,8 +77,5 @@ Made by Eng Mohamed shehab :)
   #define ADC_2.65V ADMUX|=(1<<6)|(1<<7)
 
   #define ADC_Vref_reserved ADMUX|=(1<<7)
-
-#define 
-
 
 #endif
