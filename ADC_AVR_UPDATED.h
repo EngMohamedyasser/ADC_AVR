@@ -45,8 +45,8 @@ Made by Eng Mohamed shehab :)
 
 
 //data had been resulted ? set it in your ports
-#define set_ADC_data_to_ports(data,fullport,partialport) data=ADC; \ fullport=data; \ partialport=data >> 8; //right adjustment
-#define set_ADC_data_to_ports(data,fullport,partialport) data=ADC; \ fullport=data; \ partialport=data << 1; //left adjustment
+#define set_ADC_data_to_Rports(data,fullport,partialport) data=ADC; \ fullport=data; \ partialport=data >> 8; //right adjustment
+#define set_ADC_data_to_Lports(data,fullport,partialport) data=ADC; \ fullport=data; \ partialport=data << 1; //left adjustment
 //_________________________________________________________________
 
 //VRef source i.e(this should happen in setup steps... if you will plug Vexternal , you can ignore this setup step ;))
